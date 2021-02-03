@@ -9,17 +9,17 @@ Role Variables
 
 **ap_setup_package_url** - Ansible Automation Platform install package URL
 
-Default: *None*
+*Default:* N/A
 
 *REQUIRED*
 
 **ap_setup_dir** - Path to unpack install package
 
-Default: */opt/automation-platform*
+*Default:* `/opt/automation-platform`
 
 **ap_setup_pkg_pattern** - Pattern to match install package name
 
-Default: * "ansible-automation-platform-setup-*"*
+*Default:* `ansible-automation-platform-setup-*`
 
 License
 -------
