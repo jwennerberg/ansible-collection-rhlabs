@@ -1,0 +1,3 @@
+---
+aap_installed_package: ansible-tower
+aap_setup_pkg_pattern: "ansible-tower-setup-*"
