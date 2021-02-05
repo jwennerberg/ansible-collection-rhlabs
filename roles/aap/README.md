@@ -1,7 +1,7 @@
 aap - Ansible Automation Platform
 =========
 
-Simple deployments of Red Hat Ansible Automation Platform components
+Simple non-production deployments of Red Hat Ansible Automation Platform components
 
 * Ansibe Tower
 * Private Automation Hub
