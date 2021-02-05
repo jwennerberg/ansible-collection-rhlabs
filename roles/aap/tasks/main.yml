@@ -15,6 +15,16 @@
   ansible.builtin.include_vars:
     file: "vars/{{ aap_component }}.yml"
 
+- name: set package pattern fact
+  ansible.builtin.set_fact:
+    aap_setup_pkg_pattern: "{{ __aap_setup_pkg_pattern }}"
+  when: aap_setup_pkg_pattern is undefined
+
+- name: set installed package fact
+  ansible.builtin.set_fact:
+    aap_installed_package: "{{ __aap_installed_package }}"
+  when: aap_installed_package is undefined
+
 - name: Ensure Ansible is installed
   ansible.builtin.package:
     name: ansible

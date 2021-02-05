@@ -1,12 +1,12 @@
 [tower]
-{% if aap_component == 'tower' -%}
+{% if deploy_tower == True -%}
 localhost ansible_connection=local
-{% endif %}
+{% end %}
 
 [automationhub]
-{% if aap_component == 'automationhub' -%}
+{% if deploy_automationhub == True -%}
 localhost ansible_connection=local
-{% endif %}
+{% end %}
 
 [database]
 
