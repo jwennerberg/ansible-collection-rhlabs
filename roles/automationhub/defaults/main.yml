@@ -1,3 +1,0 @@
----
-ap_setup_dir: /opt/automation-platform
-ap_setup_pkg_pattern: "ansible-automation-platform-setup-*"
