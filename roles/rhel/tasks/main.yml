@@ -48,7 +48,7 @@
   when: enable_rhsm | bool
 
 - name: Install container tools
-  anisble.builtin.dnf:
+  ansible.builtin.dnf:
     name: '@container-tools/common'
     state: present
   when: install_container_tools | bool
