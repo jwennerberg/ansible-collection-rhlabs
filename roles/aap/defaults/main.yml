@@ -1,2 +1,5 @@
 ---
 aap_setup_dir: /opt/automation-platform
+
+app_admin_passwod: demo123
+aap_pg_password: demo123

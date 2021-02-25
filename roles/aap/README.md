@@ -27,6 +27,14 @@ Valid options: `tower`, `automationhub`
 
 *Default:* `/opt/automation-platform`
 
+**aap_admin_password** - Admin password
+
+*Default:* `demo123`  **PLEASE UPDATE**
+
+**aap_pg_password** - PostgreSQL admin password
+
+*Default:* `demo123`  **PLEASE UPDATE**
+
 License
 -------
 
