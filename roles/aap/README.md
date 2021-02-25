@@ -23,6 +23,10 @@ Valid options: `tower`, `automationhub`
 
 *REQUIRED*
 
+**aap_public_ip_name** - Reachable IP or DNS name for automationhub component
+
+*Default:* `ansible_facts.default_ipv4.address`
+
 **aap_setup_dir** - Path to unpack install package
 
 *Default:* `/opt/automation-platform`

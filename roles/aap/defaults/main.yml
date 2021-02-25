@@ -1,5 +1,6 @@
 ---
 aap_setup_dir: /opt/automation-platform
+aap_public_ip_name: "{{ ansible_facts.default_ipv4.address }}"
 
 app_admin_passwod: demo123
 aap_pg_password: demo123

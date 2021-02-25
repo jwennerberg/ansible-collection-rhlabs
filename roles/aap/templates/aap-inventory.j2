@@ -5,7 +5,7 @@ localhost ansible_connection=local
 
 [automationhub]
 {% if aap_component == 'automationhub' -%}
-localhost ansible_connection=local
+{{ aap_public_ip_name }} ansible_connection=local
 {% endif %}
 
 [database]
