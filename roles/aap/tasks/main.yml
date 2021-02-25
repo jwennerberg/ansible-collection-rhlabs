@@ -15,14 +15,9 @@
   ansible.builtin.include_vars:
     file: "vars/{{ aap_component }}.yml"
 
-- name: set package pattern fact
+- name: "aap: set aap_installed_package"
   ansible.builtin.set_fact:
-    aap_setup_pkg_pattern: "{{ __aap_setup_pkg_pattern }}"
-  when: aap_setup_pkg_pattern is undefined
-
-- name: set installed package fact
-  ansible.builtin.set_fact:
-    aap_installed_package: "{{ __aap_installed_package }}"
+    aap_installed_package: "{{ __aap_installed_package_default }}"
   when: aap_installed_package is undefined
 
 - name: Ensure Ansible is installed
@@ -30,7 +25,7 @@
     name: ansible
     state: present
 
-- name: Gather the package facts
+- name: Gather package facts
   ansible.builtin.package_facts:
     manager: auto
 
@@ -52,16 +47,16 @@
 - name: Find installer absolute path
   ansible.builtin.find:
     paths: "{{ aap_setup_dir }}"
-    patterns: "{{ aap_setup_pkg_pattern }}"
+    patterns: "{{ aap_setup_pkg_pattern | default(__aap_setup_pkg_pattern_default) }}"
     file_type: directory
     recurse: false
   register: aap_setup_find
 
-- name: Set install directory fact
+- name: "aap: Set aap_setup_dir_full"
   ansible.builtin.set_fact:
     aap_setup_dir_full: "{{ aap_setup_find.files[0].path }}"
 
-- name: Set install script facts
+- name: "aap: Set install script facts"
   ansible.builtin.set_fact:
     aap_setup_script: "{{ aap_setup_dir_full }}/setup.sh"
     aap_inventory_path: "{{ aap_setup_dir_full }}/inventory"
