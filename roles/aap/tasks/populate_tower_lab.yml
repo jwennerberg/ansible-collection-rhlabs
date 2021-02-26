@@ -1,0 +1,17 @@
+---
+- name: Create a new token
+  ansible.tower.tower_token:
+    scope: "write"
+    state: present
+    tower_username: "{{ aap_admin_username | default('admin') }}"
+    tower_password: "{{ aap_admin_password }}"
+    validate_certs: no
+  #no_log: true
+
+- name: Create local inventory
+  ansible.tower.tower_inventory:
+    name: "Lab inventory"
+    organization: "Default"
+    state: present
+    tower_oauthtoken: "{{ tower_token }}"
+    validate_certs: no
