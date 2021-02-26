@@ -27,6 +27,7 @@
     dest: /etc/hosts
     content: "{{ lookup('template', 'templates/hosts.j2') }}"
     state: present
+  when: add_hosts_entries | bool
 
 - name: Subscribe to Red Hat
   community.general.redhat_subscription:

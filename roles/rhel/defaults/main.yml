@@ -1,6 +1,8 @@
 ---
 rhel_hostname: "{{ inventory_hostname }}"
 
+add_hosts_entries: true
+
 enable_rhsm: false
 enabled_repos_rhel8:
   - rhel-8-for-x86_64-appstream-rpms
