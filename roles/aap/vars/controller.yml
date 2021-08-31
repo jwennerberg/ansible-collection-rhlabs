@@ -1,0 +1,3 @@
+---
+__aap_installed_package_default: automation-controller
+__aap_setup_pkg_pattern_default: "ansible-automation-platform-setup-*"

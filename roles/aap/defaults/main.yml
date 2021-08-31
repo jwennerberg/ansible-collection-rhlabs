@@ -4,3 +4,5 @@ aap_public_ip_name: "{{ ansible_facts.default_ipv4.address }}"
 
 aap_admin_password: demo123
 aap_pg_password: demo123
+
+app_image: ansible-automation-platform-2.0-early-access-for-rhel-8-x86_64-files

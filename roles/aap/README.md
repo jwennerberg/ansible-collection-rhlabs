@@ -11,9 +11,9 @@ Role Variables
 
 **aap_component** - Ansible Automation Platform (AAP) component to install
 
-*Default:* `tower`
+*Default:* `controller`
 
-Valid options: `tower`, `automationhub`
+Valid options: `controller`, `automationhub`
 
 *REQUIRED*
 
@@ -39,6 +39,9 @@ Valid options: `tower`, `automationhub`
 
 *Default:* `demo123`  **PLEASE UPDATE**
 
+**aap_required_ram** - Override `required_ram` variable for AAP installer
+
+*Default:* `7400`
 License
 -------
 

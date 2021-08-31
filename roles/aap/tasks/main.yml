@@ -1,14 +1,14 @@
 ---
 - name: Fail if component not selected
   ansible.builtin.fail:
-    msg: Invalid aap_component value. Valid values are 'tower' and 'automationhub'
+    msg: Invalid aap_component value. Valid values are 'controller' and 'automationhub'
   when: aap_component is undefined
 
 - name: Fail if unknown component
   ansible.builtin.fail:
-    msg: Invalid aap_component value. Valid values are 'tower' and 'automationhub'
+    msg: Invalid aap_component value. Valid values are 'controller' and 'automationhub'
   when:
-    - aap_component != 'tower'
+    - aap_component != 'controller'
     - aap_component != 'automationhub'
 
 - name: Include vars
@@ -37,11 +37,15 @@
     owner: root
     group: root
 
+- name: Download Ansible Automation Platform bundle
+  ansible.builtin.include_tasks:
+    file: download.yml
+
 - name: Unzip the latest Ansible Automation Platform software
   ansible.builtin.unarchive:
-    src: "{{ aap_setup_package_url }}"
+    src: "{{ aap_setup_dir }}/aap.tar.gz"
     dest: "{{ aap_setup_dir }}"
-    remote_src: yes
+    remote_src: true
   when: aap_installed_package not in ansible_facts.packages
 
 - name: Find installer absolute path
@@ -72,6 +76,6 @@
 
 - name: Run Automation Platform installer
   ansible.builtin.shell:
-    cmd: "{{ aap_setup_script }} -i {{ aap_inventory_path }}"
+    cmd: "{{ aap_setup_script }} -i {{ aap_inventory_path }} -e 'required_ram={{ aap_required_ram | default(7400) }}'"
     chdir: "{{ aap_setup_dir_full }}"
   when: aap_installed_package not in ansible_facts.packages

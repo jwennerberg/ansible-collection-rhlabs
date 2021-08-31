@@ -1,5 +1,5 @@
-[tower]
-{% if aap_component == 'tower' -%}
+[automationcontroller]
+{% if aap_component == 'controller' -%}
 localhost ansible_connection=local
 {% endif %}
 
@@ -9,6 +9,8 @@ localhost ansible_connection=local
 {% endif %}
 
 [database]
+
+[servicescatalog_workers]
 
 [all:vars]
 admin_password='{{ aap_admin_password }}'
@@ -75,11 +77,6 @@ automationhub_pg_sslmode='prefer'
 #
 # automationhub_ssl_validate_certs = False
 
-# Isolated Tower nodes automatically generate an RSA key for authentication;
-# To disable this behavior, set this value to false
-# isolated_key_generation=true
-
-
 # SSL-related variables
 
 # If set, this will install a custom CA certificate to the system trust store.
@@ -97,3 +94,4 @@ automationhub_pg_sslmode='prefer'
 # postgres_use_ssl=False
 # postgres_ssl_cert=/path/to/pgsql.crt
 # postgres_ssl_key=/path/to/pgsql.key
+
