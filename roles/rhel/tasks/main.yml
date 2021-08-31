@@ -53,3 +53,9 @@
     name: '@container-tools/common'
     state: present
   when: install_container_tools | bool
+
+- name: Install additional packages (optional)
+  ansible.builtin.dnf:
+    name: "{{ rhel_additional_packages }}"
+    state: present
+  when: rhel_additional_packages is defined
