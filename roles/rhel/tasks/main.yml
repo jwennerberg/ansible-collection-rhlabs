@@ -37,10 +37,23 @@
     autosubscribe: false
     pool_ids: "{{ subs_pool_ids }}"
   when:
+    - simple_content_access == false
     - enable_rhsm | bool
     - subs_username is defined
     - subs_pw is defined
     - subs_pool_ids is defined
+
+- name: Subscribe to Red Hat (SCA)
+  community.general.redhat_subscription:
+    state: present
+    username: "{{ subs_username }}"
+    password: "{{ subs_pw }}"
+    autosubscribe: false
+  when:
+    - simple_content_access | bool
+    - enable_rhsm | bool
+    - subs_username is defined
+    - subs_pw is defined
 
 - name: Enable required repositories
   community.general.rhsm_repository:
