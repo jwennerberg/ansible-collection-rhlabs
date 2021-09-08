@@ -24,6 +24,7 @@
   ansible.builtin.package:
     name: ansible
     state: present
+  when: require_installed_ansible | bool
 
 - name: Gather package facts
   ansible.builtin.package_facts:
@@ -79,3 +80,10 @@
     cmd: "{{ aap_setup_script }} -i {{ aap_inventory_path }} -e 'required_ram={{ aap_required_ram | default(7400) }}'"
     chdir: "{{ aap_setup_dir_full }}"
   when: aap_installed_package not in ansible_facts.packages
+
+
+# Post task needed in 2.0 at least
+- name: Run Automation Platform installer
+  ansible.builtin.shell:
+    cmd: "awx-manage register_default_execution_environments --registry-url https://registry.redhat.io --registry-username '{{ subs_username }}' --registry-password '{{ subs_pw }}' --verify-ssl true"
+  become: awx
