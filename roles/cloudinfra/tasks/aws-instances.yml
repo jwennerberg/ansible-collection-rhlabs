@@ -18,5 +18,6 @@
     wait: true
     tags:
       identity: rhel_lab
+      group: "{{ item.group | default('rhel_lab') }}"
   loop: "{{ instances }}"
   register: rhel_lab
