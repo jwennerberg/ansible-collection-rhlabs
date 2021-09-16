@@ -83,7 +83,8 @@
 
 
 # Post task needed in 2.0 at least
-- name: Run Automation Platform installer
+- name: Configure registry credential for default execution environments
   ansible.builtin.shell:
-    cmd: "awx-manage register_default_execution_environments --registry-url https://registry.redhat.io --registry-username '{{ subs_username }}' --registry-password '{{ subs_pw }}' --verify-ssl true"
-  become: awx
+    cmd: "awx-manage register_default_execution_environments --registry-url https://registry.redhat.io --registry-username '{{ subs_username }}' --registry-password '{{ subs_pw }}' --verify-ssl true && touch /var/lib/awx/default.ee.configured"
+    creates: /var/lib/awx/default.ee.configured
+  become_user: awx
