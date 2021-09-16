@@ -24,7 +24,7 @@
   ansible.builtin.package:
     name: ansible
     state: present
-  when: require_installed_ansible | bool
+  when: require_installed_ansible|default(false)|bool
 
 - name: Gather package facts
   ansible.builtin.package_facts:
